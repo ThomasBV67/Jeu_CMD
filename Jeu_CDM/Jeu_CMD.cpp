@@ -2,19 +2,67 @@
 //
 
 #include <iostream>
+#include <thread>
+
+#include "Board.h"
+#include "Player.h"
+#include "Entity.h"
+#include "Enemy.h"
+
+using namespace std;
 
 int main()
 {
+    string input;
+    Coordonnee startingCoor;
+    Entity* tempPlay;
+    startingCoor.x = 5;
+    startingCoor.y = 0;
+
+
     std::cout << "Hello World!\n";
+
+    srand(time(0));
+
+    Board waterBoarding = Board();
+
+    waterBoarding[5][0] = new Player(10);
+    waterBoarding.setPlayerXY(startingCoor);
+
+
+    for (int i = 0; i < 10; i++)
+    {
+        waterBoarding[rand() % X_SIZE][3+rand() % (Y_SIZE-3)] = new Enemy();
+    }
+
+    waterBoarding.printBoard();
+
+    while (input != "quit")
+    {
+        cin >> input;
+
+        if (input == "up")
+        {
+            waterBoarding.movePlayer(UP);
+        }
+        else if (input == "down")
+        {
+            waterBoarding.movePlayer(DOWN);
+        }
+        else if (input == "right")
+        {
+            waterBoarding.movePlayer(RIGHT);
+        }
+        else if (input == "left")
+        {
+            waterBoarding.movePlayer(LEFT);
+        }
+        else if (input == "hp")
+        {
+            tempPlay = waterBoarding.getPlayerInfo();
+            cout << tempPlay->getHealth() << endl;
+        }
+
+        waterBoarding.printBoard();
+    }
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
