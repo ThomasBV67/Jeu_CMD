@@ -2,10 +2,20 @@
 //
 
 #include <iostream>
+#include "Board.h"
+
+using namespace std;
 
 int main()
 {
     std::cout << "Hello World!\n";
+
+    string fuck[5][5];
+    fuck[2][3] = nullptr;
+
+    Board fuck = Board();
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
