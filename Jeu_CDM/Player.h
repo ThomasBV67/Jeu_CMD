@@ -7,7 +7,11 @@ class Player : public Entity
 {
 public:
 	Player();
+	Player(int);
 	~Player();
+
+	virtual int getHealth() { return health; }
+	void setHealth(int hp) { health = hp; }
 
 private:
 	int health;

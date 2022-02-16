@@ -1,5 +1,6 @@
 #ifndef ENTITY_H
 #define ENTITY_H
+
 #include "Coordonnee.h"
 
 #define EMPTY	0
@@ -14,6 +15,9 @@ public:
 
 	int getType() { return type; };
 	void setType(int nType) { type = nType; };
+
+	virtual int getHealth() { 
+		return 0; };
 
 private:
 	int type;

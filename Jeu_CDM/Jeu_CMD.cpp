@@ -2,6 +2,8 @@
 //
 
 #include <iostream>
+#include <thread>
+
 #include "Board.h"
 #include "Player.h"
 #include "Entity.h"
@@ -11,24 +13,56 @@ using namespace std;
 
 int main()
 {
+    string input;
+    Coordonnee startingCoor;
+    Entity* tempPlay;
+    startingCoor.x = 5;
+    startingCoor.y = 0;
+
+
     std::cout << "Hello World!\n";
 
     srand(time(0));
 
     Board waterBoarding = Board();
 
-    waterBoarding[0][5] = Player();
+    waterBoarding[5][0] = new Player(10);
+    waterBoarding.setPlayerXY(startingCoor);
+
+
     for (int i = 0; i < 10; i++)
     {
-        waterBoarding[3+rand() % (X_SIZE-3)][rand() % Y_SIZE] = Enemy();
+        waterBoarding[rand() % X_SIZE][3+rand() % (Y_SIZE-3)] = new Enemy();
     }
 
-    for(int i = 0; i < X_SIZE; i++)
+    waterBoarding.printBoard();
+
+    while (input != "quit")
     {
-        for (int j = 0; j < Y_SIZE; j++)
+        cin >> input;
+
+        if (input == "up")
         {
-            cout << waterBoarding[i][j].getType() << " ";
+            waterBoarding.movePlayer(UP);
         }
-        cout << endl;
+        else if (input == "down")
+        {
+            waterBoarding.movePlayer(DOWN);
+        }
+        else if (input == "right")
+        {
+            waterBoarding.movePlayer(RIGHT);
+        }
+        else if (input == "left")
+        {
+            waterBoarding.movePlayer(LEFT);
+        }
+        else if (input == "hp")
+        {
+            tempPlay = waterBoarding.getPlayerInfo();
+            cout << tempPlay->getHealth() << endl;
+        }
+
+        waterBoarding.printBoard();
     }
 }
