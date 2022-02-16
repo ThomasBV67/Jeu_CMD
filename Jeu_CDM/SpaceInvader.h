@@ -1,3 +1,6 @@
+#ifndef SPACEINVADER_H
+#define SPACEINVADER_H
+
 #include "Board.h"
 
 class SpaceInvader
@@ -19,3 +22,5 @@ private:
 	int score = 0;
 	int level = 1;
 };
+
+#endif

@@ -2,7 +2,8 @@
 
 Entity::Entity()
 {
-	
+	type = EMPTY;
+
 }
 
 Entity::~Entity()
