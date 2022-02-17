@@ -152,6 +152,7 @@
     <ClInclude Include="coordonnee.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpaceInvader.h" />
   </ItemGroup>
