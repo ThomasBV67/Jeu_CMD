@@ -82,8 +82,15 @@ void Board::printBoard()
 {
 	char temp = ' ';
 	system("CLS");// Clear the console
+	for (int i = 0; i < X_SIZE; i++)
+	{
+		cout << "__";
+	}
+	cout << "_" << endl;
+
 	for (int i = Y_SIZE-1; i >= 0; i--)
 	{
+		cout << '|';
 		for (int j = 0; j < X_SIZE; j++)
 		{
 			switch (board[j][i]->getType())
@@ -100,10 +107,26 @@ void Board::printBoard()
 				temp = ' ';
 				break;
 			}
-			cout << temp << " ";
+			if (j == X_SIZE - 1)
+			{
+				cout << temp;
+			}
+			else
+			{
+				cout << temp << " ";
+			}
+			
 		}
-		cout << endl;
+		
+		cout << '|' << endl;
 	}
+
+	for (int i = 0; i < X_SIZE; i++)
+	{
+		cout << "##";
+	}
+	cout << "#" << endl;
+
 	if (enemiesLeft > 0)
 	{
 		printHealth();
@@ -115,7 +138,7 @@ void Board::printBoard()
 		cout << "LEVEL " << currentLevel + 1 << " COMPLETE" << endl;
 		cout << "POINTS : " << score << endl << endl;
 
-		cout << "NEXT LEVEL? PRESS 0" << endl;
+		cout << "NEXT LEVEL? PRESS SPACE" << endl;
 	}
 	
 }
@@ -237,10 +260,9 @@ void Board::nextLevel()
 	if (enemiesLeft == 0)
 	{
 		currentLevel++;
+		board[playerXY.x][playerXY.y] = new Entity();
 		initBoard(levels[currentLevel].numberEnemies);
 	}
-	
-	
 }
 
 void Board::loseHP(int damage)

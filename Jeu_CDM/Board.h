@@ -10,9 +10,9 @@
 #include <vector>
 
 // define for the size of the playing field
-#define X_SIZE 11
-#define Y_SIZE 11
-#define PROTECTED_LINES 6
+#define X_SIZE 15
+#define Y_SIZE 15
+#define PROTECTED_LINES 10
 
 #define MAX_HEALTH	10
 

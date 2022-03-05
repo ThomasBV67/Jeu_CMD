@@ -70,7 +70,7 @@ int main()
         {
             waterBoarding.playerShoot();
         }
-        else if (input == "0")
+        else if (input == " ")
         {
             waterBoarding.nextLevel();
             timeToSleep = waterBoarding.getCurrentLevel().timeBeforeDrop;
